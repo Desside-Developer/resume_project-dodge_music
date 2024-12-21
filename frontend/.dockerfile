@@ -1,4 +1,3 @@
-# Используем образ с Node.js
 FROM node:20-alpine AS build
 WORKDIR /application/frontend
 COPY package*.json ./

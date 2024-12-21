@@ -11,8 +11,35 @@ services:
     build:
       context: ../backend
       dockerfile: .dockerfile
+    networks:
+      - default
     ports:
       - "79:3000"
-    environment:
-      - NODE_ENV=production
+    env_file:
+      - ../backend/.env
+    depends_on:
+      - mysql
     restart: unless-stopped
+  mysql:
+    image: mysql:latest
+    networks:
+      - default
+    ports:
+      - "3306:3306"
+    env_file:
+      - ../backend/.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+
+volumes:
+  mysql_data:
+
+networks:
+  default:
+    driver: bridge
