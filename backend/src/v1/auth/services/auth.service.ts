@@ -4,7 +4,6 @@ import { DatabaseService } from '../../database/services/database.service';
 import { LoginUserDto, RegisterUserDto } from '../dto/auth.dto';
 import * as bcrypt from 'bcryptjs';
 const jwt = require('jsonwebtoken');
-// import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -34,7 +33,6 @@ export class AuthService {
       throw new HttpException('Invalid credentials', 401);
     }
 
-    // Assuming you have a method to generate a JWT token
     const token = this.generateJwtToken(existingUser);
     return { token };
   }

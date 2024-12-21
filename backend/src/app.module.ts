@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './v1/auth/auth.module';
 import * as dotenv from 'dotenv';
 import { DatabaseModule } from './v1/database/database.module';
+import { MusicModule } from './v1/music/music.module';
 
 dotenv.config();
 
@@ -20,7 +21,7 @@ dotenv.config();
       retryAttempts: 5,
       retryDelay: 3000,
     }),
-    AuthModule, DatabaseModule
+    AuthModule, DatabaseModule, MusicModule
   ],
   // controllers: [
   //   AuthController
