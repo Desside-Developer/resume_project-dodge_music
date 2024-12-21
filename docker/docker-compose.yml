@@ -14,7 +14,7 @@ services:
     networks:
       - default
     ports:
-      - "79:3000"
+      - "3000:3000"
     env_file:
       - ../backend/.env
     depends_on:
